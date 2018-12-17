@@ -1,4 +1,9 @@
 package com.crm.qa.pages;
 
-public class SignUpPage {
+import com.crm.qa.base.TestBase;
+import org.openqa.selenium.support.FindBy;
+
+public class SignUpPage extends TestBase {
+
+
 }
