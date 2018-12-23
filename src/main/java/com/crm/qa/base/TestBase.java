@@ -20,7 +20,7 @@ public class TestBase {
         try {
               prop = new Properties();
             FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir")
-                    + "\\src\\main\\java\\com\\crm\\qa\\config\\config.properties");
+                    + "/src/main/java/com/crm/qa/config/config.properties");
             prop.load(fileInputStream);
         }
         catch(FileNotFoundException fNException) {
@@ -33,7 +33,7 @@ public class TestBase {
     public static void initialization() {
         String browser = prop.getProperty("browser");
         if(browser.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "\\src\\main\\resources\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "/src/main/resources/chromedriver.exe");
             driver = new ChromeDriver();
         }
 
