@@ -20,7 +20,7 @@ public class LoginPageTest extends TestBase {
     @BeforeMethod
     public void setUp() {
         initialization();
-         loginPage = new LoginPage();
+        loginPage = new LoginPage();
     }
 
     @Test(priority = 1)
