@@ -24,10 +24,15 @@ public class HomePageTest extends TestBase {
         homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
     }
 
-    @Test
+    @Test(priority = 1)
     public void verifyHomePageTitleTest() {
         String title = homePage.verifyHomePageTitle();
         Assert.assertEquals(title, "CRMPRO" , "Home Page Title does not match");
+    }
+
+    @Test(priority = 2)
+    public void verifyUserNameTest() {
+        Assert.assertTrue(homePage.verifyCorrectUserName(),"UserName not matched");
     }
 
     @AfterMethod
