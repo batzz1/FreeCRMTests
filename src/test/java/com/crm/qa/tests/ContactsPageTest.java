@@ -10,43 +10,44 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class HomePageTest extends TestBase {
+public class ContactsPageTest extends TestBase {
 
     LoginPage loginPage;
     HomePage homePage;
     TestUtil testUtil;
     ContactsPage contactsPage;
 
-    public HomePageTest() {
+    public ContactsPageTest() {
         super();
     }
 
     @BeforeMethod
-    public void setup() throws InterruptedException {
+    public void setUp() throws InterruptedException {
         initialization();
-        loginPage = new LoginPage();
         testUtil = new TestUtil();
         contactsPage = new ContactsPage();
+        loginPage = new LoginPage();
         homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
-    }
-
-    @Test(priority = 1)
-    public void verifyHomePageTitleTest() {
-        String title = homePage.verifyHomePageTitle();
-        Assert.assertEquals(title, "CRMPRO" , "Home Page Title does not match");
-    }
-
-    @Test(priority = 2)
-    public void verifyUserNameTest() {
-        testUtil.switchToFrame();
-        Assert.assertTrue(homePage.verifyCorrectUserName(),"UserName not matched");
-    }
-
-    @Test(priority = 3)
-    public void verifyContactsLinkTest() {
         testUtil.switchToFrame();
         contactsPage = homePage.clickOnContactsLink();
     }
+
+
+    @Test(priority = 1)
+    public void verifyContactsPageLabel() {
+        Assert.assertTrue(contactsPage.verifyContactsLabel(), "Contact Label is missing on the Page");
+    }
+
+
+    @Test(priority = 2)
+    public void selectContactTest() {
+        contactsPage.selectContactsByName("John Doe");
+        contactsPage.selectContactsByName("Test Mahajan");
+    }
+
+
+
+
 
     @AfterMethod
     public void tearDown() {
