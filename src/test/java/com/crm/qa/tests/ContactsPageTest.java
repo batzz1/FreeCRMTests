@@ -8,6 +8,7 @@ import com.crm.qa.util.TestUtil;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class ContactsPageTest extends TestBase {
@@ -45,9 +46,11 @@ public class ContactsPageTest extends TestBase {
         contactsPage.selectContactsByName("Test Mahajan");
     }
 
-
-
-
+    @Test(priority = 3)
+    public void validateCreateNewContact() throws InterruptedException {
+        homePage.clickOnNewContactLink();
+        contactsPage.createNewContact("Mr.","Pankul", "Gupta", "TCS");
+    }
 
     @AfterMethod
     public void tearDown() {

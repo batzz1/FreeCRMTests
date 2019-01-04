@@ -2,6 +2,7 @@ package com.crm.qa.pages;
 
 import com.crm.qa.base.TestBase;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -18,6 +19,10 @@ public class HomePage extends TestBase {
 
     @FindBy(xpath = "//a[contains(text(),'Tasks)]")
     private WebElement tasksLink;
+
+    @FindBy(xpath = "//a[contains(text(),'New Contact')]")
+
+    private WebElement newContactLink;
 
     public HomePage() {
         PageFactory.initElements(driver, this);
@@ -45,5 +50,12 @@ public class HomePage extends TestBase {
     public TasksPage clickOnTasksLink(){
         tasksLink.click();
         return new TasksPage();
+    }
+
+    public void clickOnNewContactLink() {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(contactsLink).build().perform();
+        newContactLink.click();
+
     }
 }
