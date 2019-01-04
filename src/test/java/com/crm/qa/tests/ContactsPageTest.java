@@ -18,6 +18,8 @@ public class ContactsPageTest extends TestBase {
     TestUtil testUtil;
     ContactsPage contactsPage;
 
+    String sheetName = "Contacts";
+
     public ContactsPageTest() {
         super();
     }
@@ -46,11 +48,18 @@ public class ContactsPageTest extends TestBase {
         contactsPage.selectContactsByName("Test Mahajan");
     }
 
-    @Test(priority = 3)
+    @DataProvider
+    public Object[][] getCRMTestData() {
+        Object data[][] = TestUtil.getTestData(sheetName);
+        return data;
+    }
+
+    @Test(priority = 3, dataProvider = "getCRMTestData")
     public void validateCreateNewContact() throws InterruptedException {
         homePage.clickOnNewContactLink();
-        contactsPage.createNewContact("Mr.","Pankul", "Gupta", "TCS");
+        contactsPage.createNewContact("Mr.", "Pankul", "Gupta", "TCS");
     }
+
 
     @AfterMethod
     public void tearDown() {
