@@ -55,9 +55,9 @@ public class ContactsPageTest extends TestBase {
     }
 
     @Test(priority = 3, dataProvider = "getCRMTestData")
-    public void validateCreateNewContact() throws InterruptedException {
+    public void validateCreateNewContact(String title, String firstName, String lastName, String company) throws InterruptedException {
         homePage.clickOnNewContactLink();
-        contactsPage.createNewContact("Mr.", "Pankul", "Gupta", "TCS");
+        contactsPage.createNewContact(title, firstName, lastName, company);
     }
 
 
