@@ -18,7 +18,7 @@ public class TestBase {
 
     public static WebDriver driver;
     public static Properties prop;
-    public static EventFiringWebDriver e_driver;
+    public static EventFiringWebDriver eventFiringWebDriver;
     public static WebDriverEventListener eventListener;
 
     public TestBase() {
@@ -43,10 +43,10 @@ public class TestBase {
             driver = new ChromeDriver();
         }
 
-        e_driver = new EventFiringWebDriver(driver);
+        eventFiringWebDriver = new EventFiringWebDriver(driver);
         eventListener = new WebDriverListener();
-        e_driver.register(eventListener);
-        driver = e_driver;
+        eventFiringWebDriver.register(eventListener);
+        driver = eventFiringWebDriver;
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
