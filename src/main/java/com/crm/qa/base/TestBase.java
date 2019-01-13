@@ -2,6 +2,7 @@ package com.crm.qa.base;
 
 import com.crm.qa.util.TestUtil;
 import com.crm.qa.util.WebDriverListener;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -38,7 +39,7 @@ public class TestBase {
     public static void initialization() {
         String browser = prop.getProperty("browser");
         if(browser.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "/src/main/resources/chromedriver");
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         }
 
